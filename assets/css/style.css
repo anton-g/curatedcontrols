@@ -1,3 +1,11 @@
+.search,
+.tags,
+.options,
+.tile-container {
+  margin: 0;
+  margin-top: 0.6em;
+}
+
 .label {
   margin: 2px;
 }
@@ -17,22 +25,6 @@
   background-color: #5cb85c;
 }
 
-.menu {
-  margin-top: 1em;
-}
-
-.tags {
-  margin-bottom: 1em;
-}
-
-.options {
-  margin-bottom: 1.5em;
-}
-
-.search {
-  margin-bottom: 0.5em;
-}
-
 .tile {
   margin-top: 0.5em;
   margin-bottom: 1em;
@@ -49,8 +41,13 @@
 }
 
 .tile-description {
-  padding: 1em;
+  padding: 0.8em;
   font-size: 0.95em;
+}
+
+.tile-tags {
+  margin: 0;
+  margin-bottom: 1em;
 }
 
 a {
@@ -73,6 +70,52 @@ a {
   background-color: #1abc9c;
 }
 
+.topright {
+  position: absolute;
+  top: 1em;
+  right: 1.5em;
+}
+
 #beta {
-  margin-top: 1.5em;
+  margin-top: 2em;
+}
+
+/* * * * * * * * * * *
+ *                   *
+ *    ANIMATIONS     *
+ *                   *
+ * * * * * * * * * * */
+.tile,
+.tile.ng-move,
+.tile.ng-enter,
+.tile.ng-leave {
+  -webkit-transition:all linear 0.2s;
+  transition:all linear 0.2s;
+}
+
+.tile.ng-leave.ng-leave-active,
+.tile.ng-move,
+.tile.ng-enter {
+  opacity:0;
+}
+
+.tile.ng-leave,
+.tile.ng-move.ng-move-active,
+.tile.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.message,
+.message.ng-show,
+.message.ng-hide {
+  -webkit-transition:all linear 0.3s;
+  transition:all linear 0.3s;
+}
+
+.message.ng-show {
+  opacity:0;
+}
+
+.message.ng-hide {
+  opacity:1;
 }

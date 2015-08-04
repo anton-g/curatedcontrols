@@ -10,12 +10,9 @@
     function dataservice($http, $q) {
       var service = {
         getControls: getControls,
-        getTags: getTags
       };
 
       var controls = [];
-      var tagPromise = $q.defer();
-      var tags = new Set();
 
       return service;
 
@@ -30,27 +27,12 @@
         .catch(getControlsFailed);
 
         function getControlsCompleted(response) {
-          controls = response.data.results
-          setTags();
-          return controls;
+          return response.data.results;
         }
 
         function getControlsFailed(error) {
           console.log (error);
         }
-      }
-
-      function getTags() {
-        return tagPromise.promise;
-      }
-
-      function setTags() {
-        controls.forEach(function(control) {
-          control.tags.forEach(function(tag) {
-            tags.add(tag);
-          });
-        });
-        tagPromise.resolve(tags);
       }
     }
 })();

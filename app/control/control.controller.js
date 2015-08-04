@@ -13,7 +13,6 @@
         vm.controls = {};
 
         vm.tags = tags,
-        vm.selectedTags = [];
 
         activate();
 
@@ -30,7 +29,7 @@
 
         function tags(control) {
           var result = true;
-          vm.selectedTags.forEach(function(tag) {
+          tagservice.selectedTags.forEach(function(tag) {
             if (control.tags.indexOf(tag) < 0) {
               result = false;
             }

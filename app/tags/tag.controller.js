@@ -5,9 +5,9 @@
         .module('curatedcontrols')
         .controller('TagController', TagController);
 
-    TagController.$inject = ['$scope', 'dataservice'];
+    TagController.$inject = ['$scope', 'tagservice'];
 
-    function TagController($scope, dataservice) {
+    function TagController($scope, tagservice) {
       var vm = this;
 
       vm.tags = [];
@@ -20,28 +20,23 @@
       activate();
 
       function activate() {
-        dataservice.getTags()
-        .then(function(tags) {
-          vm.tags = [...tags] //Because Angular doesn't like sets.
+        $scope.$watch(function(){
+          return tagservice.tags;
+        }, function (newValue) {
+          vm.tags = newValue;
         });
       }
 
       function toggleTag(tag) {
-        var index = vm.selectedTags.indexOf(tag);
-
-        if (index > -1) {
-          vm.selectedTags.splice(index, 1);
-        } else {
-          vm.selectedTags.push(tag);
-        }
-      }
-
-      function tagIsSelected(tag) {
-        return (vm.selectedTags.indexOf(tag) > -1);
+        tagservice.toggle(tag);
       }
 
       function clearTags() {
-        vm.selectedTags = [];
+        tagservice.clearSelected();
+      }
+
+      function tagIsSelected(tag) {
+        return tagservice.isSelected(tag);
       }
     }
 })();

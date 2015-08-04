@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
-    angular.module('curatedcontrols', []);
+    angular.module('curatedcontrols', [
+      'ngAnimate'
+    ]);
 
 })();
