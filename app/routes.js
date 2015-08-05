@@ -15,9 +15,6 @@
     .when('/c/:id', {
       templateUrl: 'app/control/single-control/index.html',
     })
-    .when('/help', {
-      templateUrl: 'app/help/index.html'
-    })
     .otherwise({
       redirectTo: '/'
     });

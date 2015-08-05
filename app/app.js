@@ -4,7 +4,7 @@
     angular.module('curatedcontrols', [
       'ngAnimate',
       'ngRoute',
-      'angular-flexslider'
+      'angular-flexslider',
+      'angularUtils.directives.dirPagination'
     ]);
-
 })();

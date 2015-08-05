@@ -1,8 +1,20 @@
 Todo:
-  Single-control
+  ToS
+  Privacy Policy
 
+  Single-control
+    More from author
   Index
     List view
+    Add "loading"-message instead of 'no controls found'.
+    Pagination
+      Pagination controls should disable when not usable
+
+  Help
+    Add content
+
+  Tips
+    Implement
 
 Latergator:
   Ratings
