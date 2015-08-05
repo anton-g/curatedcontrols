@@ -26,12 +26,13 @@
       }
 
       function getControls() {
-        return $http.get('https://api.parse.com/1/classes/control')
+        return $http.get('https://api.parse.com/1/classes/control', { cache: true })
         .then(getControlsCompleted)
         .catch(getControlsFailed);
 
         function getControlsCompleted(response) {
-          return response.data.results;
+          controls = response.data.results;
+          return controls;
         }
 
         function getControlsFailed(error) {
@@ -40,7 +41,19 @@
       }
 
       function getControl(id) {
-        return $http.get('https://api.parse.com/1/classes/control/' + id)
+        //If control is loaded already, i.e. user comes from list
+        var controlPromise = $q.defer();
+        var found = controls.filter(function(c) {
+          return c.objectId == id;
+        });
+        if (found[0]) {
+          console.log (found[0]);
+          controlPromise.resolve(found[0]);
+          return controlPromise.promise;
+        }
+
+        //Otherwise load single control, i.e. user followed link to single contorl
+        return $http.get('https://api.parse.com/1/classes/control/' + id, { cache: true })
         .then(getControlCompleted)
         .catch(getControlFailed);
 

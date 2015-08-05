@@ -88,10 +88,19 @@ a {
   margin-top: 3em;
   margin-bottom: 3em;
 }
-.single-control-back {
+
+.help-content {
+  margin-top: 2em;
+}
+
+.back-button {
   position: fixed;
   left: 1em;
   top: 1em;
+}
+
+.footer {
+  margin: 2em;
 }
 
 #beta {

@@ -1,20 +1,24 @@
 <div ng-controller="SingleController as singleCtrl">
-  <div class="single-control-back">
+  <div class="back-button">
     <a class="btn btn-danger btn-sm btn-embossed" href="#/">Back</a>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 col-xs-offset-1 text-center single-control-images">
-        <img ng-src="{{ singleCtrl.control.images[0] }}" class="img-responsive img-rounded">
+      <div class="col-xs-4 col-xs-offset-1 text-center single-control-images" ng-show="singleCtrl.control.images.length">
+        <flex-slider slide="image in singleCtrl.control.images" animation="slide" slideshow=false prev-text="" next-text="">
+          <li>
+            <img ng-src="{{ image }}" class="img-responsive img-rounded">
+          </li>
+        </flex-slider>
       </div>
-      <div class="col-xs-6 text-center single-control-description">
+      <div class="text-center single-control-description col-xs-6" ng-class="{ 'col-xs-offset-3':singleCtrl.control.images.length < 1}" >
         <h4 class="text-primary single-control-title">{{ singleCtrl.control.name }}</h4>
         <span>{{ singleCtrl.control.description }}</span>
-        <h6>Checklist</h6>
+        <h6>Info</h6>
         <div class="row">
-          <div class="col-xs-4">
-            <i class="fa fa-check"></i> {{ singleCtrl.control.license }}
-          </div>
+          <p alt="License"><i class="fa fa-copyright"></i> {{ singleCtrl.control.license }}</p>
+          <p alt="Created at"><i class="fa fa-plus"></i> {{ singleCtrl.github.created_at | date }}</p>
+          <p alt="Last commit at"><i class="fa fa-exchange"></i> {{ singleCtrl.github.pushed_at | date }}</p>
         </div>
         <h6>Tags</h6>
         <span class="label label-default" ng-repeat="tag in singleCtrl.control.tags">{{ tag }}</span>
