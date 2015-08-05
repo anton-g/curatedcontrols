@@ -2,7 +2,9 @@
     'use strict';
 
     angular.module('curatedcontrols', [
-      'ngAnimate'
+      'ngAnimate',
+      'ngRoute',
+      'angular-flexslider'
     ]);
 
 })();

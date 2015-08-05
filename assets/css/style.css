@@ -71,9 +71,27 @@ a {
 }
 
 .topright {
-  position: absolute;
+  position: fixed;
   top: 1em;
   right: 1.5em;
+}
+
+.single-control-description,
+.single-control-images {
+  margin-top: 2em;
+}
+.single-control-title {
+  margin-top: 0;
+  padding-top: 0;
+}
+.single-control-report {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.single-control-back {
+  position: fixed;
+  left: 1em;
+  top: 1em;
 }
 
 #beta {
@@ -118,4 +136,9 @@ a {
 
 .message.ng-hide {
   opacity:1;
+}
+
+.flexslider {
+	background:none !important;
+	border:none !important;
 }

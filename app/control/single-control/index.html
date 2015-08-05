@@ -1,0 +1,27 @@
+<div ng-controller="SingleController as singleCtrl">
+  <div class="single-control-back">
+    <a class="btn btn-danger btn-sm btn-embossed" href="#/">Back</a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-1 text-center single-control-images">
+        <img ng-src="{{ singleCtrl.control.images[0] }}" class="img-responsive img-rounded">
+      </div>
+      <div class="col-xs-6 text-center single-control-description">
+        <h4 class="text-primary single-control-title">{{ singleCtrl.control.name }}</h4>
+        <span>{{ singleCtrl.control.description }}</span>
+        <h6>Checklist</h6>
+        <div class="row">
+          <div class="col-xs-4">
+            <i class="fa fa-check"></i> {{ singleCtrl.control.license }}
+          </div>
+        </div>
+        <h6>Tags</h6>
+        <span class="label label-default" ng-repeat="tag in singleCtrl.control.tags">{{ tag }}</span>
+      </div>
+    </div>
+    <div class="row text-center single-control-report">
+      <a class="btn btn-danger btn-xs btn-embossed" href>Report</a>
+    </div>
+  </div>
+</div>

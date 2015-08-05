@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2 menu">
+    <div class="row search">
+      <input type="text" class="form-control search" placeholder="Search controls..">
+    </div>
+    <div ng-controller="TagController as tagCtrl">
+      <div class="row tags">
+        <span class="tag label label-default" ng-repeat="tag in tagCtrl.tags" ng-click="tagCtrl.toggleTag(tag)" ng-class="{ selected:tagCtrl.tagIsSelected(tag) }">{{ tag }}</span>
+      </div>
+      <div class="row options">
+        <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="tagCtrl.clearTags()">Clear tags</a>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a href="#" class="btn btn-sm btn-primary active"><i class="fa fa-th"></i></a>
+            <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-list"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row tile-container" ng-controller="ControlController as controlCtrl">
+  <div class="cols">
+    <div class="tile" ng-repeat="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags)">
+        <div class="tile-title">
+          <a href="#/c/{{ control.objectId }}/{{ control.name }}">
+            {{ control.name }}
+          </a>
+        </div>
+        <div class="tile-body">
+          <div class="row images">
+            <div class="col-xs-10 col-xs-offset-1">
+              <flex-slider slide="image in control.images" animation="slide" slideshow=false prev-text="" next-text="">
+                <li>
+                  <img ng-src="{{ image }}" class="img-responsive img-rounded">
+                </li>
+              </flex-slider>
+            </div>
+          </div>
+          <div class="row tile-description">
+            {{ control.description }}
+          </div>
+          <div class="row tile-tags">
+            <div class="col-xs-12">
+              <span class="label label-default" ng-repeat="tag in control.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="tile-footer">
+          <div class="btn-group btn-group-justified">
+            <a class="btn btn-xs btn-default" href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a>
+            <a class="btn btn-xs btn-default" href="#/c/{{ control.objectId }}/{{ control.name }}"><i class="fa fa-2x fa-ellipsis-h"></i></a>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="message" ng-show="!filteredControls.length">
+    <div class="col-xs-12 text-center">
+      <h4>No controls found :(</h4>
+    </div>
+  </div>
+</div>
