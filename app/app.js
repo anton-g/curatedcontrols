@@ -5,6 +5,7 @@
       'ngAnimate',
       'ngRoute',
       'angular-flexslider',
-      'angularUtils.directives.dirPagination'
+      'angularUtils.directives.dirPagination',
+      'angular-loading-bar'
     ]);
 })();

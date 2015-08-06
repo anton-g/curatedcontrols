@@ -13,6 +13,7 @@
         vm.controls = {};
 
         vm.tags = tags,
+        vm.msg = "Loading..";
 
         activate();
 
@@ -20,6 +21,8 @@
           dataservice.getControls()
           .then(function(result) {
             vm.controls = result;
+
+            vm.msg = "No controls found :(";
 
             vm.controls.forEach(function(value) {
               tagservice.add(value.tags);

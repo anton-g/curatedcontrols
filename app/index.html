@@ -58,7 +58,7 @@
   <dir-pagination-controls template-url="app/control/dirPagination.tpl.html" class="text-center"></dir-pagination-controls>
   <div class="message" ng-show="!filteredControls.length">
     <div class="col-xs-12 text-center">
-      <h4>No controls found :(</h4>
+      <h4>{{ controlCtrl.msg }}</h4>
     </div>
   </div>
 </div>
