@@ -19,14 +19,18 @@
       return service;
 
       function activate() {
-        $http.defaults.headers.get = {
-          'X-Parse-Application-Id' : 'j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG',
-          'X-Parse-REST-API-Key': 'U7Z83FdFHLo9ViIyzg3vMH3Rm7AIqGe9fxgKug4b'
-        };
+
       }
 
       function getControls() {
-        return $http.get('https://api.parse.com/1/classes/control', { cache: true })
+        return $http.get('https://api.parse.com/1/classes/control',
+        {
+          cache: true,
+          headers: {
+            'X-Parse-Application-Id' : 'j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG',
+            'X-Parse-REST-API-Key': 'U7Z83FdFHLo9ViIyzg3vMH3Rm7AIqGe9fxgKug4b'
+          }
+        })
         .then(getControlsCompleted)
         .catch(getControlsFailed);
 
@@ -53,7 +57,14 @@
         }
 
         //Otherwise load single control, i.e. user followed link to single contorl
-        return $http.get('https://api.parse.com/1/classes/control/' + id, { cache: true })
+        return $http.get('https://api.parse.com/1/classes/control/' + id,
+        {
+          cache: true,
+          headers: {
+            'X-Parse-Application-Id' : 'j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG',
+            'X-Parse-REST-API-Key': 'U7Z83FdFHLo9ViIyzg3vMH3Rm7AIqGe9fxgKug4b'
+          }
+        })
         .then(getControlCompleted)
         .catch(getControlFailed);
 
