@@ -1,9 +1,11 @@
 Todo:
   ToS
   Privacy Policy
+  Refactor more stuff to directives
+  Search
 
   Single-control
-    More from author
+    Improve design
   Index
     List view
     Add "loading"-message instead of 'no controls found'.
@@ -20,3 +22,4 @@ Latergator:
   Ratings
   Comments
   Editors notes
+  More from author

@@ -21,7 +21,6 @@
 </div>
 <div class="row tile-container" ng-controller="ControlController as controlCtrl">
   <div class="cols">
-    <!--<div class="tile" ng-repeat="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags)">-->
     <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags | itemsPerPage:9)">
         <div class="tile-title">
           <a href="#/c/{{ control.objectId }}/{{ control.name }}">

@@ -124,19 +124,6 @@ a {
           box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 }
 
-.modal.fade .modal-dialog {
-    top: -150px;
-    opacity: 1;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.modal.fade.in .modal-dialog {
-    -webkit-transform: translate3d(0, 150px, 0);
-    transform: translate3d(0, 150px, 0);
-}
-
 /* * * * * * * * * * *
  *                   *
  *    ANIMATIONS     *
@@ -168,6 +155,20 @@ a {
   -webkit-transition:all linear 0.3s;
   transition:all linear 0.3s;
 }*/
+
+.modal.fade .modal-dialog {
+    top: -150px;
+    opacity: 1;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.modal.fade.in .modal-dialog {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 150px, 0);
+    transform: translate3d(0, 150px, 0);
+}
 
 .message.ng-show {
   opacity:0;

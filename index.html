@@ -35,6 +35,10 @@
 
     <script src="app/tags/tag.controller.js"></script>
     <script src="app/tags/tag.service.js"></script>
+
+    <script src="app/help/help.directive.js"></script>
+
+    <script src="app/tips/tips.directive.js"></script>
   </head>
   <body>
     <div class="topright">
@@ -59,78 +63,8 @@
         <small><a href="">Terms of Service</a> - <a href="">Privacy Policy</a></small>
       </div>
     </div>
-    <!--- TIPS MODAL -->
-    <div class="modal fade" id="tips-modal" tabindex="-1" role="dialog" aria-labelledby="help-label">
-      <div class="modal-dialog modal-flat">
-        <div class="modal-content modal-content-flat">
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                  <h4 class="text-info">Tip</h4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                  <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                      <label for="inputEmail1" class="col-lg-2 control-label">Name</label>
-                      <div class="col-lg-10">
-                        <input type="email" class="form-control" id="tip-source" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail1" class="col-lg-2 control-label">Source <span class="text-danger">*</span></label>
-                      <div class="col-lg-10">
-                        <input type="email" class="form-control" id="tip-source" placeholder="GitHub, BitBucket, etc..">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-success pull-right">Send</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <div class="text-center">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--- END TIPS MODAL -->
-    <!--- HELP MODAL -->
-    <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="tips-label">
-      <div class="modal-dialog modal-flat">
-        <div class="modal-content modal-content-flat">
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                  <h4 class="text-danger">Help</h4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <div class="text-center">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Okay!</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--- END HELP MODAL -->
+    <tips-modal></tips-modal>
+    <help-modal></help-modal>
     <script src="assets/js/flat-ui.min.js"></script>
   </body>
 </html>
