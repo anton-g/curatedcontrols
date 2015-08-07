@@ -3,11 +3,11 @@
 
     angular
         .module('curatedcontrols')
-        .controller('TagController', TagController);
+        .controller('SettingsController', SettingsController);
 
-    TagController.$inject = ['$scope', 'tagservice'];
+    SettingsController.$inject = ['$scope', 'settingsservice'];
 
-    function TagController($scope, tagservice) {
+    function SettingsController($scope, settingsservice) {
       var vm = this;
 
       vm.tags = [];
@@ -21,22 +21,22 @@
 
       function activate() {
         $scope.$watch(function(){
-          return tagservice.tags;
+          return settingsservice.tags;
         }, function (newValue) {
           vm.tags = newValue;
         });
       }
 
       function toggleTag(tag) {
-        tagservice.toggle(tag);
+        settingsservice.toggle(tag);
       }
 
       function clearTags() {
-        tagservice.clearSelected();
+        settingsservice.clearSelected();
       }
 
       function tagIsSelected(tag) {
-        return tagservice.isSelected(tag);
+        return settingsservice.isSelected(tag);
       }
     }
 })();

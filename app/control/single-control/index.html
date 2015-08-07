@@ -15,10 +15,31 @@
         <h4 class="text-primary single-control-title">{{ singleCtrl.control.name }}</h4>
         <span>{{ singleCtrl.control.description }}</span>
         <h6>Info</h6>
-        <div class="row">
-          <p alt="License"><i class="fa fa-copyright"></i> {{ singleCtrl.control.license }}</p>
-          <p alt="Created at"><i class="fa fa-plus"></i> {{ singleCtrl.github.created_at | date }}</p>
-          <p alt="Last commit at"><i class="fa fa-exchange"></i> {{ singleCtrl.github.pushed_at | date }}</p>
+        <div class="row text-left">
+          <div class="col-xs-7 col-xs-offset-3">
+            <div class="col-xs-6">
+              <div class="row">
+                <p alt="License"><i class="fa fa-copyright"></i> {{ singleCtrl.control.license }}</p>
+              </div>
+              <div class="row">
+                <p alt="License"><i class="fa fa-copyright"></i> CocoaPods </p>
+              </div>
+              <div class="row">
+                <p alt="License"><i class="fa fa-copyright"></i> Author </p>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <p alt="Created at"><i class="fa fa-plus"></i> {{ singleCtrl.github.created_at | date }}</p>
+              </div>
+              <div class="row">
+                <p alt="Last commit at"><i class="fa fa-exchange"></i> {{ singleCtrl.github.pushed_at | date }}</p>
+              </div>
+              <div class="row">
+                <p alt="Last commit at"><i class="fa fa-exchange"></i> {{ singleCtrl.github.pushed_at | date }}</p>
+              </div>
+            </div>
+          </div>
         </div>
         <h6>Tags</h6>
         <span class="label label-default" ng-repeat="tag in singleCtrl.control.tags">{{ tag }}</span>

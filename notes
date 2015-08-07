@@ -6,6 +6,7 @@ Todo:
 
   Single-control
     Improve design
+    Fetch GitHub info - currently fetches lyxit web
   Index
     List view
     Add "loading"-message instead of 'no controls found'.

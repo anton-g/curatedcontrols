@@ -5,15 +5,18 @@
         .module('curatedcontrols')
         .controller('ControlController', ControlController);
 
-    ControlController.$inject = ['dataservice', 'tagservice'];
+    ControlController.$inject = ['dataservice', 'settingsservice'];
 
-    function ControlController(dataservice, tagservice) {
+    function ControlController(dataservice, settingsservice) {
         var vm = this;
 
         vm.controls = {};
-
-        vm.tags = tags,
         vm.msg = "Loading..";
+        vm.list = false;
+
+        vm.tags = tags;
+        vm.showGrid = showGrid;
+        vm.showList = showList;
 
         activate();
 
@@ -25,19 +28,27 @@
             vm.msg = "No controls found :(";
 
             vm.controls.forEach(function(value) {
-              tagservice.add(value.tags);
+              settingsservice.add(value.tags);
             });
           });
         }
 
         function tags(control) {
           var result = true;
-          tagservice.selectedTags.forEach(function(tag) {
+          settingsservice.selectedTags.forEach(function(tag) {
             if (control.tags.indexOf(tag) < 0) {
               result = false;
             }
           });
           return result;
+        }
+
+        function showGrid() {
+          vm.list = false;
+        }
+
+        function showList() {
+          vm.list = true;
         }
     }
 })();

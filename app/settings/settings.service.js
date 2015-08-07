@@ -3,9 +3,9 @@
 
     angular
         .module('curatedcontrols')
-        .service('tagservice', tagservice);
+        .service('settingsservice', settingsservice);
 
-    function tagservice() {
+    function settingsservice() {
       var srv = this;
 
       srv.internalTags = new Set();
