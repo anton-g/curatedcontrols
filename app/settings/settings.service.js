@@ -11,11 +11,13 @@
       srv.internalTags = new Set();
       srv.tags = [];
       srv.selectedTags = [];
+      srv.styleList = false;
 
       srv.add = add;
       srv.toggle = toggle;
       srv.isSelected = isSelected;
       srv.clearSelected = clearSelected;
+      srv.setStyleList = setStyleList;
 
       function add(tagsToAdd) {
         tagsToAdd.forEach(function(tag) {
@@ -41,6 +43,11 @@
 
       function clearSelected() {
         srv.selectedTags = [];
+      }
+
+      function setStyleList(style) {
+        srv.styleList = style;
+        console.log (srv.styleList);
       }
     }
 })();

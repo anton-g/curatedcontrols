@@ -5,18 +5,17 @@
         .module('curatedcontrols')
         .controller('ControlController', ControlController);
 
-    ControlController.$inject = ['dataservice', 'settingsservice'];
+    ControlController.$inject = ['$scope', 'dataservice', 'settingsservice'];
 
-    function ControlController(dataservice, settingsservice) {
+    function ControlController($scope, dataservice, settingsservice) {
         var vm = this;
 
         vm.controls = {};
         vm.msg = "Loading..";
-        vm.list = false;
+        vm.styleList = false;
+        vm.itemsPerPage = 2;
 
         vm.tags = tags;
-        vm.showGrid = showGrid;
-        vm.showList = showList;
 
         activate();
 
@@ -31,6 +30,12 @@
               settingsservice.add(value.tags);
             });
           });
+
+          $scope.$watch(function(){
+            return settingsservice.styleList;
+          }, function (newValue) {
+            vm.styleList = newValue;
+          });
         }
 
         function tags(control) {
@@ -41,14 +46,6 @@
             }
           });
           return result;
-        }
-
-        function showGrid() {
-          vm.list = false;
-        }
-
-        function showList() {
-          vm.list = true;
         }
     }
 })();

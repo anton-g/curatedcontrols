@@ -12,10 +12,13 @@
 
       vm.tags = [];
       vm.selectedTags = [];
+      vm.styleList = false;
 
       vm.toggleTag = toggleTag;
       vm.tagIsSelected = tagIsSelected;
       vm.clearTags = clearTags;
+      vm.setStyleGrid = setStyleGrid;
+      vm.setStyleList = setStyleList;
 
       activate();
 
@@ -37,6 +40,16 @@
 
       function tagIsSelected(tag) {
         return settingsservice.isSelected(tag);
+      }
+
+      function setStyleGrid() {
+        vm.styleList = false;
+        settingsservice.setStyleList(false);
+      }
+
+      function setStyleList() {
+        vm.styleList = true;
+        settingsservice.setStyleList(true);
       }
     }
 })();
