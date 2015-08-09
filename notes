@@ -7,11 +7,13 @@ Todo:
   Single-control
     Improve design
     Fetch GitHub info - currently fetches lyxit web
+    Report
   Index
-    List view
-    Add "loading"-message instead of 'no controls found'.
+    Improve list view
     Pagination
       Pagination controls should disable when not usable
+    Fix ordering
+    Fix multiple image bug
 
   Help
     Add content

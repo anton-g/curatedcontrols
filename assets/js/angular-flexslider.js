@@ -125,6 +125,10 @@
               slides = angular.element('<ul class="slides"></ul>');
               flexsliderDiv = angular.element('<div class="flexslider"></div>');
               flexsliderDiv.append(slides);
+              if (collection.length > 1) {
+                console.log (collection);
+                flexsliderDiv.addClass('flexslider-multi');
+              }
               $element.append(flexsliderDiv);
               for (i = _l = 0, _len3 = collection.length; _l < _len3; i = ++_l) {
                 c = collection[i];

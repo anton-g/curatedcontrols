@@ -13,7 +13,7 @@
         vm.controls = {};
         vm.msg = "Loading..";
         vm.styleList = false;
-        vm.itemsPerPage = 2;
+        vm.itemsPerPage = 10;
 
         vm.tags = tags;
 
@@ -27,6 +27,7 @@
             vm.msg = "No controls found :(";
 
             vm.controls.forEach(function(value) {
+              console.log (value);
               settingsservice.add(value.tags);
             });
           });

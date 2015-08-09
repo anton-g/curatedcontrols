@@ -4,7 +4,7 @@
       <input type="text" class="form-control search" placeholder="Search controls..">
     </div>
     <div class="row tags">
-      <span class="tag label label-default" ng-repeat="tag in settingsCtrl.tags" ng-click="settingsCtrl.toggleTag(tag)" ng-class="{ selected:settingsCtrl.tagIsSelected(tag) }">{{ tag }}</span>
+      <span class="tag label label-default" ng-repeat="tag in settingsCtrl.tags | orderBy:tag" ng-click="settingsCtrl.toggleTag(tag)" ng-class="{ selected:settingsCtrl.tagIsSelected(tag) }">{{ tag }}</span>
     </div>
     <div class="row options">
       <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="settingsCtrl.clearTags()">Clear tags</a>
@@ -28,9 +28,9 @@
         <div class="tile-body">
           <div class="row images">
             <div class="col-xs-10 col-xs-offset-1">
-              <flex-slider slide="image in control.images" animation="slide" slideshow=false prev-text="" next-text="">
+              <flex-slider slide="image in control.images track by $index" animation="slide" slideshow=false prev-text="" next-text="">
                 <li>
-                  <img ng-src="{{ image }}" class="img-responsive img-rounded">
+                  <img ng-src="{{ image.url }}" class="img-responsive img-rounded">
                 </li>
               </flex-slider>
             </div>
@@ -47,7 +47,7 @@
         <div class="tile-footer">
           <div class="btn-group btn-group-justified">
             <a class="btn btn-xs btn-default" href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a>
-            <a class="btn btn-xs btn-default" href="#/c/{{ control.objectId }}/{{ control.name }}"><i class="fa fa-2x fa-ellipsis-h"></i></a>
+            <a class="btn btn-xs btn-default" href="#/c/{{ control.objectId }}/{{ control.name }}"><strong>More</strong></a>
           </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Tags</th>
-            <th>GitHub</th>
+            <th>Source</th>
             <th>Info</th>
           </tr>
         </thead>
