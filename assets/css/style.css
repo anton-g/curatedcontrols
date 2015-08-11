@@ -139,32 +139,6 @@ a {
  *    ANIMATIONS     *
  *                   *
  * * * * * * * * * * */
-/*.tile,
-.tile.ng-move,
-.tile.ng-enter,
-.tile.ng-leave {
-  -webkit-transition:all linear 0.2s;
-  transition:all linear 0.2s;
-}
-
-.tile.ng-leave.ng-leave-active,
-.tile.ng-move,
-.tile.ng-enter {
-  opacity:0;
-}
-
-.tile.ng-leave,
-.tile.ng-move.ng-move-active,
-.tile.ng-enter.ng-enter-active {
-  opacity:1;
-}
-
-.message,
-.message.ng-show,
-.message.ng-hide {
-  -webkit-transition:all linear 0.3s;
-  transition:all linear 0.3s;
-}*/
 
 .modal.fade .modal-dialog {
     top: -150px;

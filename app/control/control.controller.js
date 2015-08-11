@@ -14,8 +14,10 @@
         vm.msg = "Loading..";
         vm.styleList = false;
         vm.itemsPerPage = 10;
+        vm.today = new Date();
 
         vm.tags = tags;
+        vm.isNew = isNew;
 
         activate();
 
@@ -27,7 +29,6 @@
             vm.msg = "No controls found :(";
 
             vm.controls.forEach(function(value) {
-              console.log (value);
               settingsservice.add(value.tags);
             });
           });
@@ -47,6 +48,13 @@
             }
           });
           return result;
+        }
+
+        function isNew(control) {
+          var ctrlDate = new Date(control.createdAt);
+          var yesterday = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
+
+          return (ctrlDate > yesterday);
         }
     }
 })();
