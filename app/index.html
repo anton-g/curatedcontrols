@@ -20,7 +20,7 @@
 </div>
 <div class="row control-container" ng-controller="ControlController as controlCtrl">
   <div class="cols" ng-hide="controlCtrl.styleList">
-    <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags | itemsPerPage:controlCtrl.itemsPerPage)">
+    <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | orderBy:controlCtrl.dateSort:true)">
       <img ng-show="controlCtrl.isNew(control)" src="assets/img/ribbon-new.svg" alt="ribbon" class="tile-hot-ribbon">
       <div class="tile-title">
         <a href="#/c/{{ control.objectId }}/{{ control.name }}">
@@ -68,13 +68,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags | itemsPerPage:controlCtrl.itemsPerPage)">
+          <tr dir-paginate="control in controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | orderBy:controlCtrl.dateSort:true">
             <td class="imagecell">
               <div class="col-xs-12">
-                <img class="img-responsive" ng-src="{{ image.url }}" ng-repeat="image in control.images"/>
+                <img class="img-responsive" ng-src="{{ image.url }}" ng-repeat="image in control.images">
               </div>
             </td>
-            <td><a href="#/c/{{ control.objectId }}/{{ control.name }}">{{ control.name }}</td>
+            <td><a href="#/c/{{ control.objectId }}/{{ control.name }}">{{ control.name }}</a></td>
             <td>{{ control.description }}</td>
             <td><span class="label label-default" ng-repeat="tag in control.tags">{{ tag }}</span></td>
             <td class="text-center"><a href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a></td>

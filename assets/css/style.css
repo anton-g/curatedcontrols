@@ -65,12 +65,15 @@ a {
     -moz-column-count:3;
     -moz-column-gap: 2%;
     -moz-column-width: 30%;
+    -moz-column-fill: balance;
     -webkit-column-count:3;
     -webkit-column-gap: 2%;
     -webkit-column-width: 30%;
+    -webkit-column-fill: balance;
     column-count: 3;
     column-gap: 2%;
     column-width: 30%;
+    column-fill: balance;
 }
 
 .btn-default:hover {

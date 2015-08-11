@@ -14,10 +14,10 @@
         vm.msg = "Loading..";
         vm.styleList = false;
         vm.itemsPerPage = 10;
-        vm.today = new Date();
 
         vm.tags = tags;
         vm.isNew = isNew;
+        vm.dateSort = dateSort;
 
         activate();
 
@@ -55,6 +55,10 @@
           var yesterday = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
 
           return (ctrlDate > yesterday);
+        }
+
+        function dateSort(control) {
+          return new Date(control.createdAt);
         }
     }
 })();
