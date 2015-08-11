@@ -5,12 +5,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 text-center">
-        <h2 class="text-primary">{{ singleCtrl.control.name }}</h2>
-        <small>by {{ singleCtrl.control.author }}</small>
+        <h2 class="text-primary single-control-title">{{ singleCtrl.control.name }}</h2>
+        <small>by <a href="http://github.com/{{ singleCtrl.control.author }}">{{ singleCtrl.control.author }}</a></small>
       </div>
     </div>
     <div class="col-xs-6 text-center">
-      <div class="col-xs-10 col-xs-offset-1 single-control-images" ng-show="singleCtrl.control.images.length">
+      <div class="col-xs-8 col-xs-offset-2 single-control-images" ng-show="singleCtrl.control.images.length">
         <flex-slider slide="image in singleCtrl.control.images track by $index" animation="slide" slideshow=false prev-text="" next-text="">
           <li>
             <img ng-src="{{ image.url }}" class="img-responsive img-rounded">
@@ -21,18 +21,29 @@
     <div class="col-xs-4 text-center">
       <div class="row single-control-description">
         <p>{{ singleCtrl.control.description }}</p>
-        <span class="label label-success" ng-repeat="tag in singleCtrl.control.tags">{{ tag }}</span>
       </div>
       <div class="row">
-        <div class="col-xs-12  single-control-info">
-          <p>License: {{ singleCtrl.control.license }}</p>
-          <p>Language: {{ singleCtrl.control.language }}</p>
-          <p>Last commit: {{ singleCtrl.control.github.updated_at | date }}</p>
-          <p>Stars: {{ singleCtrl.control.github.stargazers_count | number }}</p>
-          <p>Forks: {{ singleCtrl.control.github.forks | number }}</p>
+        <div class="col-xs-10 col-xs-offset-1 single-control-info">
+          <div class="col-xs-6 text-right">
+            <p><strong>Language</strong>:</p>
+            <p><strong>License</strong>:</p>
+            <p><strong>Last commit</strong>:</p>
+            <p><strong>Stars</strong>:</p>
+            <p><strong>Forks</strong>:</p>
+          </div>
+          <div class="col-xs-6 text-left">
+            <p>{{ singleCtrl.control.language }}</p>
+            <p>{{ singleCtrl.control.license }}</p>
+            <p>{{ singleCtrl.control.github.updated_at | date }}</p>
+            <p>{{ singleCtrl.control.github.stargazers_count | number }}</p>
+            <p>{{ singleCtrl.control.github.forks | number }}</p>
+          </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row single-control-tags">
+        <span class="label label-success" ng-repeat="tag in singleCtrl.control.tags">{{ tag }}</span>
+      </div>
+      <div class="row single-control-src-btn">
         <a href="{{ singleCtrl.control.link }}" class="btn btn-info btn-block">Open on GitHub</a>
       </div>
     </div>

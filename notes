@@ -2,24 +2,27 @@ Todo:
   ToS
   Privacy Policy
   Analytics
-  Refactor more stuff to directives
   Search
 
   Single-control
     Improve design
-    Report
+    Report email backend
+
   Index
     Improve list view
     Pagination
       Pagination controls should disable when not usable
-    Fix ordering
 
   Help
-    Add content
+    Improve content
 
   Tips
     Add email backend
 
+
+One last thing:
+  Spellcheck everything.
+  Soft release, upload -> check -> small spread
 Release:
   HackerNews
   Product Hunt yes plz
@@ -27,8 +30,12 @@ Release:
   Slack
 
 V2:
+  Refactor more stuff to directives
   Ratings
   Comments
   Editors notes
   More from author
   Collections (Essentials etc)
+
+Future ideas:
+  Border around images?
