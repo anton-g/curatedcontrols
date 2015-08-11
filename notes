@@ -1,6 +1,7 @@
 Todo:
   ToS
   Privacy Policy
+  Analytics
   Refactor more stuff to directives
   Search
 
@@ -13,7 +14,6 @@ Todo:
     Pagination
       Pagination controls should disable when not usable
     Fix ordering
-    Fix multiple image bug
 
   Help
     Add content
@@ -21,8 +21,15 @@ Todo:
   Tips
     Add email backend
 
-Latergator:
+Release:
+  HackerNews
+  Product Hunt yes plz
+  Reddit
+  Slack
+
+V2:
   Ratings
   Comments
   Editors notes
   More from author
+  Collections (Essentials etc)
