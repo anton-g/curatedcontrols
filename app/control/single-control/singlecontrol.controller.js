@@ -11,7 +11,6 @@
         var vm = this;
 
         vm.control = {};
-        vm.github = {};
 
         activate();
 
@@ -19,12 +18,12 @@
           dataservice.getControl($routeParams.id)
           .then(function(control) {
             vm.control = control;
-          });
 
-          //Get github info
-          getGitHubInfo('Lyxit/lyxit-web')
-          .then(function(info) {
-            vm.github = info;
+            getGitHubInfo(vm.control.author + '/' + vm.control.name)
+            .then(function(info) {
+              vm.control.github = info;
+              console.log (vm.control.github);
+            });
           });
         }
 
