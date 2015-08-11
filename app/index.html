@@ -1,4 +1,5 @@
 <div class="row">
+<div class="row">
   <div class="col-xs-8 col-xs-offset-2 menu" ng-controller="SettingsController as settingsCtrl">
     <div class="row search">
       <input type="text" class="form-control search" placeholder="Search controls..">
@@ -66,7 +67,7 @@
         </thead>
         <tbody>
           <tr dir-paginate="control in filteredControls = (controlCtrl.controls | filter:controlCtrl.tags | itemsPerPage:controlCtrl.itemsPerPage)">
-            <td>{{ control.name }}</td>
+            <td><a href="#/c/{{ control.objectId }}/{{ control.name }}">{{ control.name }}</td>
             <td>{{ control.description }}</td>
             <td><span class="label label-default" ng-repeat="tag in control.tags">{{ tag }}</span></td>
             <td class="text-center"><a href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a></td>
