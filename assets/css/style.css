@@ -94,6 +94,10 @@ a {
 .single-control-report {
   margin-top: 3em;
 }
+.single-control-info p {
+  font-size: 0.8em;
+  margin: 0.1em;
+}
 
 .help-content {
   margin-top: 2em;
