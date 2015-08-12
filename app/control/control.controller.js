@@ -14,6 +14,7 @@
         vm.msg = "Loading..";
         vm.styleList = false;
         vm.itemsPerPage = 10;
+        vm.searchString = "";
 
         vm.tags = tags;
         vm.isNew = isNew;
@@ -37,6 +38,12 @@
             return settingsservice.styleList;
           }, function (newValue) {
             vm.styleList = newValue;
+          });
+
+          $scope.$watch(function(){
+            return settingsservice.searchString;
+          }, function (newValue) {
+            vm.searchString = newValue;
           });
         }
 

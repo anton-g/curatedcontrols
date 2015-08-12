@@ -12,12 +12,14 @@
       srv.tags = [];
       srv.selectedTags = [];
       srv.styleList = false;
+      srv.searchString = "";
 
       srv.add = add;
       srv.toggle = toggle;
       srv.isSelected = isSelected;
       srv.clearSelected = clearSelected;
       srv.setStyleList = setStyleList;
+      srv.setSearchString = setSearchString;
 
       function add(tagsToAdd) {
         tagsToAdd.forEach(function(tag) {
@@ -48,6 +50,10 @@
       function setStyleList(style) {
         srv.styleList = style;
         console.log (srv.styleList);
+      }
+
+      function setSearchString(s) {
+        srv.searchString = s;
       }
     }
 })();

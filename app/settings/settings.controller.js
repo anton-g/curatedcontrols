@@ -19,6 +19,7 @@
       vm.clearTags = clearTags;
       vm.setStyleGrid = setStyleGrid;
       vm.setStyleList = setStyleList;
+      vm.onSearch = onSearch;
 
       activate();
 
@@ -36,6 +37,10 @@
 
       function clearTags() {
         settingsservice.clearSelected();
+      }
+
+      function onSearch(s) {
+        settingsservice.setSearchString(s);
       }
 
       function tagIsSelected(tag) {

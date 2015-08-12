@@ -2,13 +2,16 @@ Todo:
   ToS
   Privacy Policy
   Analytics
+  
   Search
+    Improve search: i.e. 'http' shouldnt return all controls/dont search 'link'field.
 
   Single-control
     Improve design
     Report email backend
 
   Index
+    Gif image loading
     Improve list view
     Pagination
       Pagination controls should disable when not usable
@@ -18,7 +21,6 @@ Todo:
 
   Tips
     Add email backend
-
 
 One last thing:
   Spellcheck everything.
