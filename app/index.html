@@ -68,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="control in controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | orderBy:controlCtrl.dateSort:true">
+          <tr dir-paginate="control in controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | filter:controlCtrl.searchString | orderBy:controlCtrl.dateSort:true">
             <td class="imagecell">
               <div class="col-xs-12">
                 <img class="img-responsive" ng-src="{{ image.url }}" ng-repeat="image in control.images">
