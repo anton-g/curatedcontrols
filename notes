@@ -2,9 +2,14 @@ Todo:
   ToS
   Privacy Policy
   Analytics
-  
+
+  Input
+    Possibility to add new license/language
+    Check if author exists and use that if possible before creating new author
+
   Search
-    Improve search: i.e. 'http' shouldnt return all controls/dont search 'link'field.
+    'http' shouldnt return all controls/dont search 'link'field.
+    Maybe add search button and dont search on every keystroke
 
   Single-control
     Improve design
@@ -22,13 +27,19 @@ Todo:
   Tips
     Add email backend
 
+Testcase:
+  Site:
+
+  Input:
+    Add multiple controls from same author
+
 One last thing:
   Spellcheck everything.
   Soft release, upload -> check -> small spread
 Release:
-  HackerNews
+  HackerNews 'Show HN'
   Product Hunt yes plz
-  Reddit
+  Reddit - iosprogramming / swift / ...
   Slack
 
 V2:
