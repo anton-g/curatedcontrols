@@ -20,7 +20,7 @@
 </div>
 <div class="row control-container" ng-controller="ControlController as controlCtrl">
   <div class="cols" ng-hide="controlCtrl.styleList">
-    <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | filter:controlCtrl.searchString | orderBy:controlCtrl.dateSort:true)">
+    <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | filter:controlCtrl.search | orderBy:controlCtrl.dateSort:true)">
       <img ng-show="controlCtrl.isNew(control)" src="assets/img/ribbon-new.svg" alt="ribbon" class="tile-hot-ribbon">
       <div class="tile-title">
         <a href="#/c/{{ control.objectId }}/{{ control.name }}">

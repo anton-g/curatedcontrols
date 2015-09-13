@@ -19,6 +19,7 @@
         vm.tags = tags;
         vm.isNew = isNew;
         vm.dateSort = dateSort;
+        vm.search = search;
 
         activate();
 
@@ -66,6 +67,10 @@
 
         function dateSort(control) {
           return new Date(control.createdAt);
+        }
+
+        function search(control) {
+          return ((control.name.indexOf(vm.searchString) != -1) || (control.description.indexOf(vm.searchString) != -1));
         }
     }
 })();
