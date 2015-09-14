@@ -10,13 +10,6 @@
     function NewController($scope, GitHubService, DataService) {
         var vm = this;
 
-        //Parse.com setup
-        Parse.initialize("j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG", "7e5DCt2qGeJsyOCz01ANCj5BMmxe13PCBbfRj7yh");
-        var Control = Parse.Object.extend('control');
-        var Author = Parse.Object.extend('author');
-        var Tag = Parse.Object.extend('tag');
-        var License = Parse.Object.extend('license');
-
         vm.fetch = fetch;
         vm.send = send;
         vm.selectTag = selectTag;
@@ -36,6 +29,13 @@
         vm.controlLang = "Objective-C";
         vm.controlImgs = [];
         vm.controlTags = [];
+
+        //Parse.com setup
+        Parse.initialize("j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG", "7e5DCt2qGeJsyOCz01ANCj5BMmxe13PCBbfRj7yh");
+        var Control = Parse.Object.extend('control');
+        var Author = Parse.Object.extend('author');
+        var Tag = Parse.Object.extend('tag');
+        var License = Parse.Object.extend('license');
 
         activate();
 
@@ -87,6 +87,16 @@
           });
         }
 
+        function getExistingAuthor() {
+          for (var i = 0; i < vm.allAuthors.length; i++) {
+            vm.allAuthors[i]
+            if (vm.allAuthors[i].get('name') == vm.controlAuthor) {
+              return vm.allAuthors[i];
+            }
+          }
+          return false;
+        }
+
         function send() {
           uploadImages(vm.controlName).then(function(img1,img2,img3,img4,img5, img6, img7, img8, img9, img10) {
             var rawimgs = [img1,img2,img3,img4,img5, img6, img7, img8, img9, img10];
@@ -111,11 +121,11 @@
               }
             }
 
-            //----Check if author exists-----, else create new author
-
-            //ELSE:
-            var author = new Author();
-            author.set('name', vm.controlAuthor)
+            var author = getExistingAuthor();
+            if (!author) {
+              author = new Author();
+              author.set('name', vm.controlAuthor)
+            }
 
             var control = new Control();
 
