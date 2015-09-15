@@ -12,7 +12,7 @@
 
         vm.gh = {};
         vm.license = "Loading license..";
-        vm.readme = "Loading readme..";
+        vm.readme = $sce.trustAsHtml("Loading readme..");
 
         activate();
 
@@ -20,10 +20,12 @@
           $scope.$watch(function(){
             return GitHubService.github;
           }, function (newValue) {
-            vm.gh = newValue;
+            if (newValue) {
+              vm.gh = newValue;
 
-            license(vm.gh.contents_url);
-            readme(vm.gh.contents_url, 'README.md');
+              license(vm.gh.contents_url);
+              readme(vm.gh.contents_url, 'README.md');
+            }
           });
         }
 

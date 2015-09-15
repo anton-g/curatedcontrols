@@ -10,7 +10,7 @@
     function GitHubService($http) {
         var service = this;
 
-        service.github = null;
+        //service.github = null;
 
         service.fetch = fetch;
 
