@@ -1,95 +1,73 @@
 <div class="row">
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2 menu" ng-controller="SettingsController as settingsCtrl">
+  <div class="col-xs-8 col-xs-offset-2 menu" ng-controller="Settings as vm">
     <div class="row search">
-      <input type="text" class="form-control search" ng-model="searchString" ng-change="settingsCtrl.onSearch(searchString)" placeholder="Search controls..">
+      <form>
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="searchString" placeholder="Search controls..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" ng-click="vm.setSearch(searchString)">Search</button>
+          </span>
+        </div>
+      </form>
     </div>
     <div class="row tags">
-      <span class="tag label label-default" ng-repeat="tag in settingsCtrl.tags | orderBy:tag" ng-click="settingsCtrl.toggleTag(tag)" ng-class="{ selected:settingsCtrl.tagIsSelected(tag) }">{{ tag }}</span>
+      <span class="tag label label-default" ng-repeat="tag in vm.tags | orderBy:tag" ng-click="vm.toggleTag(tag)" ng-class="{ selected:vm.tagIsSelected(tag) }">{{ tag.get('name') }}</span>
     </div>
     <div class="row options">
-      <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="settingsCtrl.clearTags()">Clear tags</a>
+      <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="vm.clearTags()">Clear tags</a>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a href class="btn btn-sm btn-primary" ng-class="{ active:!settingsCtrl.styleList }" ng-click="settingsCtrl.setStyleGrid()"><i class="fa fa-th"></i></a>
-          <a href class="btn btn-sm btn-primary" ng-class="{ active:settingsCtrl.styleList }" ng-click="settingsCtrl.setStyleList()"><i class="fa fa-list"></i></a>
+          <a href class="btn btn-sm btn-primary" ng-class="{ active:!vm.styleList }" ng-click="vm.setStyleGrid()"><i class="fa fa-th"></i></a>
+          <a href class="btn btn-sm btn-primary" ng-class="{ active:vm.styleList }" ng-click="vm.setStyleList()"><i class="fa fa-list"></i></a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row control-container" ng-controller="ControlController as controlCtrl">
-  <div class="cols" ng-hide="controlCtrl.styleList">
-    <div class="tile" dir-paginate="control in filteredControls = (controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | filter:controlCtrl.search | orderBy:controlCtrl.dateSort:true)">
-      <img ng-show="controlCtrl.isNew(control)" src="assets/img/ribbon-new.svg" alt="ribbon" class="tile-hot-ribbon">
-      <div class="tile-title">
-        <a href="#/c/{{ control.objectId }}/{{ control.name }}">
-          {{ control.name }}
-        </a>
-      </div>
-      <div class="tile-body">
-        <div class="row images">
-          <div class="col-xs-10 col-xs-offset-1">
-            <flex-slider slide="image in control.images track by $index" animation="slide" slideshow=false prev-text="" next-text="">
-              <li>
-                <img ng-src="{{ image.url }}" class="img-responsive img-rounded">
-              </li>
-            </flex-slider>
+<div class="row feed-container" ng-controller="Feed as vm">
+  <div class="section">
+    <div class="row">
+      <div class="tile col-xs-12 col-md-6 col-lg-4" dir-paginate="control in filteredControls = (vm.controls | itemsPerPage:vm.itemsPerPage | filter:vm.tags | filter:vm.search | orderBy:vm.dateSort:true)">
+        <img ng-show="vm.isNew(control)" src="content/img/ribbon-new.svg" alt="ribbon" class="tile-hot-ribbon">
+        <div class="tile-title">
+          <a href="#/c/{{ control.id }}/{{ control.get('name') }}">
+            {{ control.get('name') }}
+          </a>
+        </div>
+        <div class="tile-body">
+          <div class="row images">
+            <div class="col-xs-12">
+              <flex-slider slide="image in control.get('previews') track by $index" animation="slide" slideshow=false prev-text="" next-text="">
+                <li>
+                  <img ng-src="{{ image._url }}" class="img-responsive img-rounded">
+                </li>
+              </flex-slider>
+            </div>
           </div>
         </div>
         <div class="row tile-description">
-          {{ control.description }}
+          {{ control.get('description') }}
         </div>
         <div class="row tile-tags">
           <div class="col-xs-12">
-            <span class="label label-default" ng-repeat="tag in control.tags">{{ tag }}</span>
+            <span class="label label-default" ng-repeat="tag in control.get('tags')">{{ tag.get('name') }}</span>
+          </div>
+        </div>
+        <div class="tile-footer">
+          <div class="btn-group btn-group-justified">
+            <a class="btn btn-xs btn-default" href="{{ control.get('link') }}"><i class="fa fa-2x fa-github"></i></a>
+            <a class="btn btn-xs btn-default" href="#/c/{{ control.id }}/{{ control.get('name') }}"><strong>More</strong></a>
           </div>
         </div>
       </div>
-      <div class="tile-footer">
-        <div class="btn-group btn-group-justified">
-          <a class="btn btn-xs btn-default" href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a>
-          <a class="btn btn-xs btn-default" href="#/c/{{ control.objectId }}/{{ control.name }}"><strong>More</strong></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" ng-show="controlCtrl.styleList">
-    <div class="col-xs-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Images</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Tags</th>
-            <th>Source</th>
-            <th>Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr dir-paginate="control in controlCtrl.controls | itemsPerPage:controlCtrl.itemsPerPage | filter:controlCtrl.tags | filter:controlCtrl.searchString | orderBy:controlCtrl.dateSort:true">
-            <td class="imagecell">
-              <div class="col-xs-12">
-                <img class="img-responsive" ng-src="{{ image.url }}" ng-repeat="image in control.images">
-              </div>
-            </td>
-            <td><a href="#/c/{{ control.objectId }}/{{ control.name }}">{{ control.name }}</a></td>
-            <td>{{ control.description }}</td>
-            <td><span class="label label-default" ng-repeat="tag in control.tags">{{ tag }}</span></td>
-            <td class="text-center"><a href="{{ control.link }}"><i class="fa fa-2x fa-github"></i></a></td>
-            <td class="text-center"><a href="#/c/{{ control.objectId }}/{{ control.name }}">More</a></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
   <div class="row">
-    <dir-pagination-controls template-url="app/control/dirPagination.tpl.html" class="text-center"></dir-pagination-controls>
+    <!-- Pagination -->
   </div>
   <div class="message" ng-show="!filteredControls.length">
     <div class="col-xs-12 text-center">
-      <h4>{{ controlCtrl.msg }}</h4>
+      <h4>{{ vm.msg }}</h4>
     </div>
   </div>
 </div>

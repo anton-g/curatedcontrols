@@ -2,6 +2,47 @@
     'use strict';
 
     angular
+        .module('curatedcontrols.settings')
+        .controller('Settings', Settings);
+
+    Settings.$inject = ['$scope', 'settingsservice'];
+
+    function Settings($scope, settingsservice) {
+        var vm = this;
+
+        vm.tags = [];
+        vm.selectedTags = [];
+
+        vm.toggleTag = settingsservice.toggleTag;
+        vm.clearTags = settingsservice.clearTags;
+        vm.setStyleGrid = setStyleGrid;
+        vm.setStyleList = setStyleList;
+        vm.tagIsSelected = settingsservice.tagSelected;
+        vm.setSearch = settingsservice.setSearch;
+
+        activate();
+
+        function activate() {
+          settingsservice.getTags()
+          .then(function(tags) {
+            vm.tags = tags;
+          });
+        }
+
+        function setStyleGrid() {
+
+        }
+
+        function setStyleList() {
+
+        }
+    }
+})();
+/*
+(function() {
+    'use strict';
+
+    angular
         .module('curatedcontrols')
         .controller('SettingsController', SettingsController);
 
@@ -58,3 +99,4 @@
       }
     }
 })();
+*/

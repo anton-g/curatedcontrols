@@ -1,0 +1,60 @@
+<!--- REPORT MODAL -->
+<div class="Report as vm">
+  <div class="modal fade" id="report-modal" tabindex="-1" role="dialog" aria-labelledby="report-label">
+    <div class="modal-dialog modal-flat">
+      <div class="modal-content modal-content-flat">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-6 col-xs-offset-3">
+                <h4 class="text-danger">Report</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-xs-offset-3">
+                <form class="form-horizontal" role="form">
+                  <p>Found something wonky about a control? Not living up to the quality you expect from CC? Just report it below and we'll be on it as soon as possible!</p>
+                  <div class="form-group">
+                    <label for="report-control" class="col-lg-2 control-label">Control</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="report-control" placeholder="Control" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="report-reason" class="col-lg-2 control-label">Reason <span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                      <select data-toggle="select" class="form-control select select-primary" id="report-reason">
+                        <option>Incorrect infomation</option>
+                        <option>Low quality</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="report-comment" class="col-lg-2 control-label">Comment</label>
+                    <div class="col-lg-10">
+                      <textarea class="form-control" id="report-comment" placeholder="Please provide more details if possible.."></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button type="submit" class="btn btn-success pull-right" ng-click="vm.send()">Send</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- END REPORT MODAL -->

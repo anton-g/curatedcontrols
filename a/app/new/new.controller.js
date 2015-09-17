@@ -233,11 +233,7 @@
 
             var control = new Control();
 
-            var tagRelation = control.relation('tags');
             vm.controlTags = $('#tags').tagsinput('items');
-            for (var i = 0; i < vm.controlTags.length; i++) {
-              tagRelation.add(vm.controlTags[i]);
-            }
 
             var data = {
               name: vm.controlName,
@@ -247,7 +243,8 @@
               license: license,
               link: vm.controlLink,
               images: gifs,
-              previews: previews
+              previews: previews,
+              tags: vm.controlTags
             };
 
             control.save(data, {

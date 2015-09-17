@@ -6,66 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Curated Controls - Hand picked, open source controls for iOS</title>
 
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="content/css/bootstrap.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/flat-ui.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/flexslider.css" rel="stylesheet">
-    <link href="assets/css/loading-bar.css" rel="stylesheet">
+    <link href="content/css/flat-ui.css" rel="stylesheet">
+    <link href="content/css/style.css" rel="stylesheet">
+    <link href="content/css/flexslider.css" rel="stylesheet">
+    <link href="content/css/loading-bar.css" rel="stylesheet">
 
+    <!-- Vendor -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
 
-    <script src="assets/js/jquery.flexslider.js"></script>
-    <script src="assets/js/angular-flexslider.js"></script>
+    <script src="scripts/jquery.flexslider.js"></script>
+    <script src="scripts/angular-flexslider.js"></script>
+    <script src="scripts/dirPagination.js"></script>
+    <script src="scripts/loading-bar.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.6.0.min.js"></script>
 
-    <script src="assets/js/dirPagination.js"></script>
+    <!-- Bootstrap -->
+    <script src="app/app.module.js"></script>
 
-    <script src="assets/js/loading-bar.js"></script>
+    <!-- Core -->
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/routes.js"></script>
+    <script src="app/core/dataservice.js"></script>
 
-    <script src="app/app.js"></script>
-    <script src="app/routes.js"></script>
+    <!-- Services -->
+    <script src="app/services/settingsservice.js"></script>
+    <script src="app/services/githubservice.js"></script>
 
-    <script src="app/control/control.controller.js"></script>
-    <script src="app/control/control.service.js"></script>
+    <!-- Settings -->
+    <script src="app/settings/settings.module.js"></script>
+    <script src="app/settings/settings.js"></script>
 
-    <script src="app/control/single-control/singlecontrol.controller.js"></script>
-    <script src="app/control/single-control/report.directive.js"></script>
+    <!-- Feed -->
+    <script src="app/feed/feed.module.js"></script>
+    <script src="app/feed/feed.js"></script>
 
-    <script src="app/settings/settings.controller.js"></script>
-    <script src="app/settings/settings.service.js"></script>
+    <!-- Control -->
+    <script src="app/control/control.module.js"></script>
+    <script src="app/control/control.js"></script>
+    <script src="app/control/report.js"></script>
 
-    <script src="app/help/help.directive.js"></script>
+    <!-- Help -->
+    <script src="app/help/help.module.js"></script>
+    <script src="app/help/help.js"></script>
 
-    <script src="app/tips/tips.directive.js"></script>
+    <!-- Tips -->
+    <script src="app/tips/tips.module.js"></script>
+    <script src="app/tips/tips.js"></script>
   </head>
   <body>
-    <div class="topright">
-      <a class="btn btn-info btn-xs btn-embossed" href=""  data-toggle="modal" data-target="#tips-modal">Tip</a>
-      <a class="btn btn-danger btn-xs btn-embossed" href="" data-toggle="modal" data-target="#help-modal">Help</a>
-    </div>
+    <ng-include src="'app/layout/menu.html'"></ng-include>
     <div class="text-center" id="beta">
       <span class="label label-danger">BETA</span>
     </div>
     <div class="container">
-      <div class="col-xs-12 text-center">
-        <h2>Curated Controls</h2>
-        <h6>Hand picked, open source controls for iOS</h6>
-      </div>
+      <div ng-include="'app/layout/header.html'"></div>
       <div ng-view></div>
-      <div class="footer text-center">
-        <div class="row">
-          <small>Curated by <a href="http://lyxit.se">Lyxit</a></small>
-        </div>
-        <div class="row">
-          <small><a href="#/tos">Terms of Service</a> - <a href="#/privacy">Privacy Policy</a></small>
-        </div>
-      </div>
+      <div ng-include="'app/layout/footer.html'"></div>
     </div>
-    <tips-modal></tips-modal>
-    <help-modal></help-modal>
-    <script src="assets/js/flat-ui.min.js"></script>
+    <ng-include src="'app/tips/tips.html'"></ng-include>
+    <ng-include src="'app/help/help.html'"></ng-include>
+    <script src="scripts/flat-ui.min.js"></script>
   </body>
 </html>

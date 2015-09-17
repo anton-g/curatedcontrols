@@ -1,7 +1,7 @@
 (function() {
 
   angular
-      .module('curatedcontrols')
+      .module('curatedcontrols.core')
       .config(routeProvider);
 
   function routeProvider($routeProvider) {
@@ -10,16 +10,16 @@
       templateUrl: 'app/index.html',
     })
     .when('/c/:id/:name', {
-      templateUrl: 'app/control/single-control/index.html',
+      templateUrl: 'app/control/control.html',
     })
     .when('/c/:id', {
-      templateUrl: 'app/control/single-control/index.html',
+      templateUrl: 'app/control/control.html',
     })
     .when('/tos', {
-      templateUrl: 'app/tos/index.html',
+      templateUrl: 'app/tos/tos.html',
     })
     .when('/privacy', {
-      templateUrl: 'app/privacy/index.html',
+      templateUrl: 'app/privacy/privacy.html',
     })
     .otherwise({
       redirectTo: '/'

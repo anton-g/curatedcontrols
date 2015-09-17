@@ -1,14 +1,22 @@
+app
+\_services
+  \_dataservice.js
+\_single-control
+\_tips
+\_tos
+\_privacy
+\_help
+\_feed
+
 Todo:
   ToS
   Privacy Policy
   Analytics
+  Rich Sharing
 
   Input
-    Possibility to add new license/language
-    Check if author exists and use that if possible before creating new author
 
   Search
-    'http' shouldnt return all controls/dont search 'link'field.
     Maybe add search button and dont search on every keystroke
 
   Single-control
@@ -16,7 +24,6 @@ Todo:
     Report email backend
 
   Index
-    Gif image loading
     Improve list view
     Pagination
       Pagination controls should disable when not usable
