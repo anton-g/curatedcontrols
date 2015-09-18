@@ -10,15 +10,22 @@
         </div>
       </form>
     </div>
-    <div class="row tags">
-      <span class="tag label label-default" ng-repeat="tag in vm.tags | orderBy:tag" ng-click="vm.toggleTag(tag)" ng-class="{ selected:vm.tagIsSelected(tag) }">{{ tag.get('name') }}</span>
-    </div>
-    <div class="row options">
-      <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="vm.clearTags()">Clear tags</a>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <a href class="btn btn-sm btn-primary" ng-class="{ active:!vm.styleList }" ng-click="vm.setStyleGrid()"><i class="fa fa-th"></i></a>
-          <a href class="btn btn-sm btn-primary" ng-class="{ active:vm.styleList }" ng-click="vm.setStyleList()"><i class="fa fa-list"></i></a>
+    <div class="row">
+      <div class="tags col-xs-12 col-md-8">
+        <span class="tag label label-default" ng-repeat="tag in vm.tags | orderBy:tag" ng-click="vm.toggleTag(tag)" ng-class="{ selected:vm.tagIsSelected(tag) }">{{ tag.get('name') }}</span>
+      </div>
+      <div class="options col-xs-12 col-md-4">
+        <a class="btn btn-primary btn-sm btn-embossed pull-left" href ng-click="vm.clearTags()">Clear tags</a>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a href class="btn btn-sm btn-primary" ng-class="{ active:!vm.styleList }" ng-click="vm.setStyleGrid()"><i class="fa fa-th"></i></a>
+            <a href class="btn btn-sm btn-primary" ng-class="{ active:vm.styleList }" ng-click="vm.setStyleList()"><i class="fa fa-list"></i></a>
+          </div>
+        </div>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a href class="btn btn-sm btn-primary" ng-repeat="lang in vm.languages" ng-click="vm.setLanguage(lang)" ng-class="{ active:vm.langIsSelected(lang) }">{{ lang.get('name') }}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -27,7 +34,7 @@
 <div class="row feed-container" ng-controller="Feed as vm">
   <div class="section">
     <div class="row">
-      <div class="tile col-xs-12 col-md-6 col-lg-4" dir-paginate="control in filteredControls = (vm.controls | itemsPerPage:vm.itemsPerPage | filter:vm.tags | filter:vm.search | orderBy:vm.dateSort:true)">
+      <div class="tile col-xs-12 col-md-6 col-lg-4" dir-paginate="control in filteredControls = (vm.controls | itemsPerPage:vm.itemsPerPage | filter:vm.tags | filter:vm.search | filter:vm.langFilter | orderBy:vm.dateSort:true)">
         <img ng-show="vm.isNew(control)" src="content/img/ribbon-new.svg" alt="ribbon" class="tile-hot-ribbon">
         <div class="tile-title">
           <a href="#/c/{{ control.id }}/{{ control.get('name') }}">

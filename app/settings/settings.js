@@ -11,14 +11,24 @@
         var vm = this;
 
         vm.tags = [];
+        vm.languages = [];
         vm.selectedTags = [];
 
         vm.toggleTag = settingsservice.toggleTag;
         vm.clearTags = settingsservice.clearTags;
+        vm.tagIsSelected = settingsservice.tagSelected;
+
         vm.setStyleGrid = setStyleGrid;
         vm.setStyleList = setStyleList;
-        vm.tagIsSelected = settingsservice.tagSelected;
+
         vm.setSearch = settingsservice.setSearch;
+
+        vm.setLanguage = settingsservice.selectLang;
+        vm.langIsSelected = settingsservice.langIsSelected;
+
+        function test() {
+          console.log ('test');
+        }
 
         activate();
 
@@ -26,6 +36,11 @@
           settingsservice.getTags()
           .then(function(tags) {
             vm.tags = tags;
+          });
+
+          settingsservice.getLanguages()
+          .then(function(langs) {
+            vm.languages = langs;
           });
         }
 

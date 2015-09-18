@@ -19,6 +19,7 @@
         vm.tags = tags;
         vm.isNew = isNew;
         vm.search = search;
+        vm.langFilter = langFilter;
 
         activate();
 
@@ -54,6 +55,14 @@
 
         function search(control) {
           return ((control.get('name').indexOf(settingsservice.getSearch()) != -1) || (control.get('description').indexOf(settingsservice.getSearch()) != -1));
+        }
+
+        function langFilter(control) {
+          var selectedLang = settingsservice.getSelectedLang();
+          if (!selectedLang) {
+            return true;
+          }
+          return (control.get('language').id == selectedLang.id);
         }
 
         function indexOfObj(obj, arr) {

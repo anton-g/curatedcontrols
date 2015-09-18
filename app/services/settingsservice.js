@@ -11,18 +11,27 @@
         var srv = this;
         srv.tags = [];
         srv.selectedTags = [];
+        srv.languages = [];
+        srv.selectedLang = null;
         srv.search = "";
 
         var settingsservice = {
             getTags: getTags,
             toggleTag: toggleTag,
             clearTags: clearTags,
-            setFeedStyle: setFeedStyle,
-            tagSelected: tagSelected,
-            setSearch: setSearch,
-            itemsPerPage: itemsPerPage,
             getSelectedTags: getSelectedTags,
-            getSearch: getSearch
+            tagSelected: tagSelected,
+
+            setFeedStyle: setFeedStyle,
+            itemsPerPage: itemsPerPage,
+
+            setSearch: setSearch,
+            getSearch: getSearch,
+
+            getLanguages: getLanguages,
+            getSelectedLang: getSelectedLang,
+            selectLang: selectLang,
+            langIsSelected: langIsSelected
         };
 
         return settingsservice;
@@ -89,6 +98,39 @@
 
         function getSearch() {
           return srv.search;
+        }
+
+        function getLanguages() {
+          var defer = $q.defer();
+
+          if (srv.languages.length > 0) {
+            defer.resolve(srv.languages);
+          } else {
+            dataservice.getLanguages()
+            .then(function(languages) {
+              srv.languages = languages;
+              defer.resolve(srv.languages);
+            });
+          }
+
+          return defer.promise;
+        }
+
+        function getSelectedLang() {
+          return srv.selectedLang;
+        }
+
+        function selectLang(lang) {
+          if (srv.selectedLang && lang.id == srv.selectedLang.id) {
+            srv.selectedLang = null;
+            return;
+          }
+
+          srv.selectedLang = lang;
+        }
+
+        function langIsSelected(lang) {
+          return (srv.selectedLang && lang.id == srv.selectedLang.id);
         }
     }
 })();
