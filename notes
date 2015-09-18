@@ -1,13 +1,3 @@
-app
-\_services
-  \_dataservice.js
-\_single-control
-\_tips
-\_tos
-\_privacy
-\_help
-\_feed
-
 Todo:
   ToS
   Privacy Policy
@@ -28,7 +18,7 @@ Todo:
     Pagination
       Pagination controls should disable when not usable
 
-  Help
+  About
     Improve content
 
   Tips

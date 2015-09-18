@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('curatedcontrols.help', []);
+        .module('curatedcontrols.about', []);
 })();

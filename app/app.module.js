@@ -7,7 +7,7 @@
       'curatedcontrols.settings',
       'curatedcontrols.feed',
       'curatedcontrols.control',
-      'curatedcontrols.help',
+      'curatedcontrols.about',
       'curatedcontrols.tips'
     ]);
 })();

@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('curatedcontrols.help')
-        .controller('Help', Help);
+        .module('curatedcontrols.about')
+        .controller('About', About);
 
-    Help.$inject = [];
+    About.$inject = [];
 
-    function Help() {
+    function About() {
         var vm = this;
 
         activate();
