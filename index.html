@@ -12,6 +12,19 @@
     <link href="content/css/style.css" rel="stylesheet">
     <link href="content/css/flexslider.css" rel="stylesheet">
     <link href="content/css/loading-bar.css" rel="stylesheet">
+  </head>
+  <body>
+    <ng-include src="'app/layout/menu.html'"></ng-include>
+    <div class="text-center" id="beta">
+      <span class="label label-danger">BETA</span>
+    </div>
+    <div class="container">
+      <div ng-include="'app/layout/header.html'"></div>
+      <div ng-view></div>
+      <div ng-include="'app/layout/footer.html'"></div>
+    </div>
+    <ng-include src="'app/tips/tips.html'"></ng-include>
+    <ng-include src="'app/about/about.html'"></ng-include>
 
     <!-- Vendor -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -23,6 +36,7 @@
     <script src="scripts/dirPagination.js"></script>
     <script src="scripts/loading-bar.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.6.0.min.js"></script>
+    <script src="scripts/flat-ui.min.js"></script>
 
     <!-- Bootstrap -->
     <script src="app/app.module.js"></script>
@@ -56,19 +70,5 @@
     <!-- Tips -->
     <script src="app/tips/tips.module.js"></script>
     <script src="app/tips/tips.js"></script>
-  </head>
-  <body>
-    <ng-include src="'app/layout/menu.html'"></ng-include>
-    <div class="text-center" id="beta">
-      <span class="label label-danger">BETA</span>
-    </div>
-    <div class="container">
-      <div ng-include="'app/layout/header.html'"></div>
-      <div ng-view></div>
-      <div ng-include="'app/layout/footer.html'"></div>
-    </div>
-    <ng-include src="'app/tips/tips.html'"></ng-include>
-    <ng-include src="'app/about/about.html'"></ng-include>
-    <script src="scripts/flat-ui.min.js"></script>
   </body>
 </html>

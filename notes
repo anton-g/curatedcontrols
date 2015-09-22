@@ -7,14 +7,16 @@ Todo:
   Input
 
   Search
-    Maybe add search button and dont search on every keystroke
+    Search on stroke or button
 
   Single-control
     Improve design
-    Report email backend
+    Report
+      Email backend
+      General improvements
 
   Index
-    Improve list view
+    ListView?
     Pagination
       Pagination controls should disable when not usable
 
@@ -40,7 +42,6 @@ Release:
   Slack
 
 V2:
-  Refactor more stuff to directives
   Ratings
   Comments
   Editors notes
