@@ -55,9 +55,6 @@
           var cacheData = cache.get(cacheKey);
           if (cacheData) {
             defer.resolve(cacheData);
-            console.log ('--------------------------');
-            console.log ('Returned data from CACHE: ');
-            console.log (cacheData);
           }
           else {
             parseFind(Class, cacheKey, defer);
@@ -72,9 +69,6 @@
             success: function(results) {
               defer.resolve(results);
               cache.put(cacheKey, results)
-              console.log ('--------------------------');
-              console.log ('Returned data from ZE INTERNETZ: ');
-              console.log (results);
             },
             error: function(error) {
               defer.reject(error);
@@ -85,21 +79,38 @@
         function getControlById(id) {
           var defer = $q.defer();
 
-          var query = new Parse.Query(Control);
-          query.include('author');
-          query.include('license');
-          query.include('language');
+          if (cache.get('controlCache')) {
+            var control = controlFromCache(id);
+            defer.resolve(control);
+          } else {
+            var query = new Parse.Query(Control);
+            query.include('author');
+            query.include('license');
+            query.include('language');
 
-          query.get(id, {
-            success: function(results) {
-              defer.resolve(results);
-            },
-            error: function(error) {
-              defer.reject(error);
-            }
-          });
+            query.get(id, {
+              success: function(results) {
+                defer.resolve(results);
+              },
+              error: function(error) {
+                defer.reject(error);
+              }
+            });
+          }
 
           return defer.promise;
+        }
+
+        function controlFromCache(id) {
+          var cacheData = cache.get('controlCache');
+
+          for(var i = 0; i < cacheData.length; i++) {
+            if (cacheData[i].id === id) {
+              return cacheData[i];
+            }
+          }
+
+          return "ERROR";
         }
     }
 })();
