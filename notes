@@ -15,7 +15,8 @@ Todo:
       Email backend
       General improvements
 
-  Index
+  Feed
+    Setting for items per page
     ListView?
     Pagination
       Pagination controls should disable when not usable
@@ -47,6 +48,7 @@ V2:
   Editors notes
   More from author
   Collections (Essentials etc)
+  More direct links (Only obj-c, certain tags etc)
 
 Future ideas:
   Border around images?
