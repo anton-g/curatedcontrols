@@ -39,15 +39,11 @@
         function getTags() {
           var defer = $q.defer();
 
-          if (srv.tags.length > 0) {
+          dataservice.getTags()
+          .then(function(tags) {
+            srv.tags = tags;
             defer.resolve(srv.tags);
-          } else {
-            dataservice.getTags()
-            .then(function(tags) {
-              srv.tags = tags;
-              defer.resolve(srv.tags);
-            });
-          }
+          });
 
           return defer.promise;
         }
@@ -103,15 +99,11 @@
         function getLanguages() {
           var defer = $q.defer();
 
-          if (srv.languages.length > 0) {
+          dataservice.getLanguages()
+          .then(function(languages) {
+            srv.languages = languages;
             defer.resolve(srv.languages);
-          } else {
-            dataservice.getLanguages()
-            .then(function(languages) {
-              srv.languages = languages;
-              defer.resolve(srv.languages);
-            });
-          }
+          });
 
           return defer.promise;
         }

@@ -5,9 +5,9 @@
         .module('curatedcontrols.core')
         .factory('dataservice', dataservice);
 
-    dataservice.$inject = ['$http', '$q'];
+    dataservice.$inject = ['$http', '$q', '$cacheFactory'];
 
-    function dataservice($http, $q) {
+    function dataservice($http, $q, $cacheFactory) {
         var dataservice = {
             getControls: getControls,
             getControlById: getControlById,
@@ -16,6 +16,8 @@
             getLanguages: getLanguages,
             getLicenses: getLicenses
         };
+
+        var cache = $cacheFactory('datacache');
 
         //Parse.com setup
         Parse.initialize("j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG", "7e5DCt2qGeJsyOCz01ANCj5BMmxe13PCBbfRj7yh");
@@ -28,39 +30,56 @@
         return dataservice;
 
         function getControls() {
-          return parseFind(Control);
+          return parseRequest(Control, 'controlCache');
         }
 
         function getTags() {
-          return parseFind(Tag);
+          return parseRequest(Tag, 'tagCache');
         }
 
         function getAuthors() {
-          return parseFind(Author);
+          return parseRequest(Author, 'authorCache');
         }
 
         function getLanguages() {
-          return parseFind(Language);
+          return parseRequest(Language, 'languageCache');
         }
 
         function getLicenses() {
-          return parseFind(License);
+          return parseRequest(License, 'licenseCache');
         }
 
-        function parseFind(Class) {
+        function parseRequest(Class, cacheKey) {
           var defer = $q.defer();
 
+          var cacheData = cache.get(cacheKey);
+          if (cacheData) {
+            defer.resolve(cacheData);
+            console.log ('--------------------------');
+            console.log ('Returned data from CACHE: ');
+            console.log (cacheData);
+          }
+          else {
+            parseFind(Class, cacheKey, defer);
+          }
+
+          return defer.promise;
+        }
+
+        function parseFind(Class, cacheKey, defer) {
           var query = new Parse.Query(Class);
           query.find({
             success: function(results) {
               defer.resolve(results);
+              cache.put(cacheKey, results)
+              console.log ('--------------------------');
+              console.log ('Returned data from ZE INTERNETZ: ');
+              console.log (results);
             },
             error: function(error) {
               defer.reject(error);
             }
           });
-
-          return defer.promise;
         }
 
         function getControlById(id) {
