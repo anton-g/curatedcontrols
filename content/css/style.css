@@ -61,21 +61,6 @@ a {
   color: inherit;
 }
 
-.cols {
-    -moz-column-count:3;
-    -moz-column-gap: 2%;
-    -moz-column-width: 30%;
-    -moz-column-fill: balance;
-    -webkit-column-count:3;
-    -webkit-column-gap: 2%;
-    -webkit-column-width: 30%;
-    -webkit-column-fill: balance;
-    column-count: 3;
-    column-gap: 2%;
-    column-width: 30%;
-    column-fill: balance;
-}
-
 .btn-default:hover {
   background-color: #1abc9c;
 }
@@ -170,4 +155,20 @@ a {
 
 .message.ng-hide {
   opacity:1;
+}
+
+.flexslider:hover .flex-direction-nav .flex-prev {
+  left: -18px !important;
+}
+
+.flexslider:hover .flex-direction-nav .flex-next {
+  right: -12px !important;
+}
+
+.flex-direction-nav .flex-prev {
+  left: -35px !important;
+}
+
+.flex-direction-nav .flex-next {
+  right: -30px !important;
 }

@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-6 text-center">
       <div class="col-xs-8 col-xs-offset-2 single-control-images" ng-show="vm.control.get('previews').length">
-        <flex-slider slide="image in vm.control.get('previews') track by $index" animation="slide" slideshow=false prev-text="" next-text="">
+        <flex-slider slide="image in vm.images track by $index" animation="slide" slideshow=false prev-text="" next-text="">
           <li><img ng-src="{{ image._url }}" class="img-responsive img-rounded"></li>
         </flex-slider>
       </div>
