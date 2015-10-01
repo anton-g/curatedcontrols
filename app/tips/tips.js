@@ -19,7 +19,7 @@
         }
 
         function send() {
-          console.log ('send tip');
+          console.log('send tip');
         }
     }
 })();

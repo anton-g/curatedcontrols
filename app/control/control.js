@@ -5,7 +5,6 @@
         .module('curatedcontrols.control')
         .controller('Control', Control);
 
-    
     /* @ngInject */
     function Control($routeParams, dataservice, githubservice) {
         var vm = this;

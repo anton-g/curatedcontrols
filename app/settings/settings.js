@@ -27,7 +27,7 @@
         vm.langIsSelected = settingsservice.langIsSelected;
 
         function test() {
-          console.log ('test');
+          console.log('test');
         }
 
         activate();

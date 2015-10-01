@@ -8,14 +8,15 @@
     settingsservice.$inject = ['$q', 'dataservice'];
 
     function settingsservice($q, dataservice) {
+        /*jshint validthis: true */
         var srv = this;
         srv.tags = [];
         srv.selectedTags = [];
         srv.languages = [];
         srv.selectedLang = null;
-        srv.search = "";
+        srv.search = '';
 
-        var settingsservice = {
+        var service = {
             getTags: getTags,
             toggleTag: toggleTag,
             clearTags: clearTags,
@@ -34,7 +35,7 @@
             langIsSelected: langIsSelected
         };
 
-        return settingsservice;
+        return service;
 
         function getTags() {
           var defer = $q.defer();
@@ -113,7 +114,7 @@
         }
 
         function selectLang(lang) {
-          if (srv.selectedLang && lang.id == srv.selectedLang.id) {
+          if (srv.selectedLang && lang.id === srv.selectedLang.id) {
             srv.selectedLang = null;
             return;
           }
@@ -122,7 +123,7 @@
         }
 
         function langIsSelected(lang) {
-          return (srv.selectedLang && lang.id == srv.selectedLang.id);
+          return (srv.selectedLang && lang.id === srv.selectedLang.id);
         }
     }
 })();

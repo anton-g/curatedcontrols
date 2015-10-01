@@ -8,7 +8,7 @@
     dataservice.$inject = ['$http', '$q', '$cacheFactory'];
 
     function dataservice($http, $q, $cacheFactory) {
-        var dataservice = {
+        var service = {
             getControls: getControls,
             getControlById: getControlById,
             getTags: getTags,
@@ -20,14 +20,14 @@
         var cache = $cacheFactory('datacache');
 
         //Parse.com setup
-        Parse.initialize("j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG", "7e5DCt2qGeJsyOCz01ANCj5BMmxe13PCBbfRj7yh");
+        Parse.initialize('j9xiw2SW5WIg3GcFe5L3mJeIX61zKiXqKwdDcwlG', '7e5DCt2qGeJsyOCz01ANCj5BMmxe13PCBbfRj7yh');
         var Control = Parse.Object.extend('control');
         var Author = Parse.Object.extend('author');
         var Tag = Parse.Object.extend('tag');
         var License = Parse.Object.extend('license');
         var Language = Parse.Object.extend('language');
 
-        return dataservice;
+        return service;
 
         function getControls() {
           return parseRequest(Control, 'controlCache');
@@ -68,7 +68,7 @@
           query.find({
             success: function(results) {
               defer.resolve(results);
-              cache.put(cacheKey, results)
+              cache.put(cacheKey, results);
             },
             error: function(error) {
               defer.reject(error);
@@ -110,7 +110,7 @@
             }
           }
 
-          return "ERROR";
+          return 'ERROR';
         }
     }
 })();

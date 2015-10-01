@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.controls = [];
-        vm.msg = "Loading..";
+        vm.msg = 'Loading..';
         vm.itemsPerPage = settingsservice.itemsPerPage;
         //vm.feedStyle =
 
@@ -28,7 +28,7 @@
           .then(function(controls) {
             vm.controls = controls;
 
-            vm.msg = "No controls found :(";
+            vm.msg = 'No controls found :(';
           });
         }
 
@@ -54,7 +54,9 @@
         }
 
         function search(control) {
-          return ((control.get('name').indexOf(settingsservice.getSearch()) != -1) || (control.get('description').indexOf(settingsservice.getSearch()) != -1));
+          var containsName = (control.get('name').indexOf(settingsservice.getSearch()) !== -1);
+          var containsDescription = (control.get('description').indexOf(settingsservice.getSearch()) !== -1);
+          return (containsName || containsDescription);
         }
 
         function langFilter(control) {
@@ -62,7 +64,7 @@
           if (!selectedLang) {
             return true;
           }
-          return (control.get('language').id == selectedLang.id);
+          return (control.get('language').id === selectedLang.id);
         }
 
         function indexOfObj(obj, arr) {

@@ -15,8 +15,8 @@
         return service;
 
         function send(title, body) {
-          console.log ('SENDING EMAIL TO ' + title + ' WITH BODY ' + body);
-          console.log ('not');
+          console.log('SENDING EMAIL TO ' + title + ' WITH BODY ' + body);
+          console.log('not');
         }
     }
 })();

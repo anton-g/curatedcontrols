@@ -11,9 +11,9 @@
         var vm = this;
 
         vm.send = send;
-        vm.name = "";
-        vm.reason = "";
-        vm.comment = "";
+        vm.name = '';
+        vm.reason = '';
+        vm.comment = '';
 
         activate();
 
@@ -26,10 +26,6 @@
 
         function send() {
           emailservice.send('Reported control: ' + vm.name, 'Reason: ' + vm.reason + '\nComment: ' + vm.comment);
-
-          console.log (vm.name);
-          console.log (vm.reason);
-          console.log (vm.comment);
         }
     }
 })();
