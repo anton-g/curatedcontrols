@@ -17,6 +17,9 @@ var paths = {
   fonts: './content/fonts/**/*',
 };
 
+gulp.task('default', ['help'], function() {});
+gulp.task('help', plug.taskListing);
+
 gulp.task('js', ['analyze'], function(){
   return gulp
     .src(source)
