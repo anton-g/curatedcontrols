@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
-    del = require('del');
+    del = require('del'),
+    glob = require('glob'),
+    plato = require('plato');
 var plug = require('gulp-load-plugins')();
 
 var source = [
@@ -8,7 +10,11 @@ var source = [
 
 var paths = {
   build: './build/',
-  scripts: './scripts/**/*.js'
+  scripts: './scripts/**/*.js',
+  index: './index.html',
+  css: './content/css/**/*.css',
+  images: './content/img/**/*',
+  fonts: './content/fonts/**/*',
 };
 
 gulp.task('js', ['analyze'], function(){
@@ -25,16 +31,9 @@ gulp.task('js', ['analyze'], function(){
     .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('scripts', function() {
-    return gulp.src(paths.scripts)
-        .pipe(plug.concat('vendor.min.js'))
-        .pipe(plug.bytediff.start())
-        .pipe(plug.uglify())
-        .pipe(plug.bytediff.stop(bytediffFormatter))
-        .pipe(gulp.dest(paths.build));
-});
-
 gulp.task('analyze', function(){
+  generatePlatoReport();
+
   return gulp
     .src(source)
     .pipe(plug.jshint('./.jshintrc'))
@@ -42,13 +41,69 @@ gulp.task('analyze', function(){
     .pipe(plug.jshint.reporter("fail"));
 });
 
-gulp.task('build', ['js'], function(){
+gulp.task('scripts', function() {
+    return gulp.src(paths.scripts)
+        .pipe(plug.concat('vendor.min.js'))
+        .pipe(plug.bytediff.start())
+        .pipe(plug.uglify())
+        .pipe(plug.bytediff.stop(bytediffFormatter))
+        .pipe(gulp.dest(paths.build + 'scripts'));
+});
 
+gulp.task('css', function(){
+  return gulp.src(paths.css)
+    .pipe(plug.concat('all.min.css'))
+    .pipe(plug.autoprefixer('last 2 version', '> 5%'))
+    .pipe(plug.bytediff.start())
+    .pipe(plug.minifyCss({}))
+    .pipe(plug.bytediff.stop(bytediffFormatter))
+    .pipe(gulp.dest(paths.build + 'content/css/'));
+});
+
+gulp.task('images', function(){
+  var dest = paths.build + 'content/img';
+
+  return gulp.src(paths.images)
+    .pipe(plug.cache(plug.imagemin({
+      optimizationLevel: 3
+    })))
+    .pipe(gulp.dest(dest));
+});
+
+gulp.task('fonts', function() {
+    var dest = paths.build + 'content/fonts';
+
+    return gulp
+        .src(paths.fonts)
+        .pipe(gulp.dest(dest));
+});
+
+gulp.task('build', ['js', 'scripts', 'css', 'images', 'fonts'], function(){
+  var sources = gulp.src(['./build/**/*.js', './build/**/*.css'], {read: false});
+
+  return gulp
+    .src(paths.index)
+    .pipe(plug.inject(sources))
+    .pipe(gulp.dest(paths.build));
 });
 
 gulp.task('clean', function(cb) {
     del(paths.build, cb);
 });
+
+/**
+ * Start Plato inspector and visualizer
+ */
+function generatePlatoReport() {
+    var files = glob.sync('./app/**/*.js');
+
+    var options = {
+        title: 'Plato Inspections Report',
+    };
+    var outputDir = './report/plato';
+
+    plato.inspect(files, outputDir, options, function(report) {});
+}
 
 /**
  * Formatter for bytediff to display the size changes after processing

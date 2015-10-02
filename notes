@@ -17,7 +17,6 @@ Todo:
     Improve design
     Report
       Email backend
-      General improvements
 
   Feed
     Setting for items per page
@@ -45,6 +44,7 @@ Release:
   Product Hunt yes plz
   Reddit - iosprogramming / swift / ...
   Slack
+  Dev Tools Weekly
 
 V2:
   Ratings
