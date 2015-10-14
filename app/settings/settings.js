@@ -5,8 +5,7 @@
         .module('curatedcontrols.settings')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['$scope', 'settingsservice'];
-
+    /* @ngInject */
     function Settings($scope, settingsservice) {
         var vm = this;
 

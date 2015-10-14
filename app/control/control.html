@@ -1,6 +1,6 @@
 <div ng-controller="Control as vm">
   <div class="back-button">
-    <a class="btn btn-danger btn-sm btn-embossed" href="#/">Back</a>
+    <a class="btn btn-danger btn-sm btn-embossed" href="/">Back</a>
   </div>
   <div class="container">
     <div class="row">
@@ -42,7 +42,7 @@
         <span class="label label-success" ng-repeat="tag in vm.control.get('tags')">{{ tag.get('name') }}</span>
       </div>
       <div class="row single-control-src-btn">
-        <a href="{{ vm.control.get('link') }}" class="btn btn-info btn-block">Open on GitHub</a>
+        <a href="{{ vm.control.get('link') }}" class="btn btn-info btn-block btn-embossed">Open on GitHub</a>
       </div>
     </div>
   </div>
