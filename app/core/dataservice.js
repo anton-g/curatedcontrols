@@ -5,8 +5,7 @@
         .module('curatedcontrols.core')
         .factory('dataservice', dataservice);
 
-    dataservice.$inject = ['$http', '$q', '$cacheFactory'];
-
+    /* @ngInject */
     function dataservice($http, $q, $cacheFactory) {
         var service = {
             getControls: getControls,

@@ -5,8 +5,7 @@
         .module('curatedcontrols')
         .factory('settingsservice', settingsservice);
 
-    settingsservice.$inject = ['$q', 'dataservice'];
-
+    /* @ngInject */
     function settingsservice($q, dataservice) {
         /*jshint validthis: true */
         var srv = this;

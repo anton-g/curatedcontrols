@@ -5,8 +5,7 @@
         .module('curatedcontrols.feed')
         .controller('Feed', Feed);
 
-    Feed.$inject = ['dataservice', 'settingsservice'];
-
+    /* @ngInject */
     function Feed(dataservice, settingsservice) {
         var vm = this;
 

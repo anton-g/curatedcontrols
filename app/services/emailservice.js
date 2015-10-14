@@ -5,8 +5,6 @@
         .module('curatedcontrols')
         .factory('emailservice', emailservice);
 
-    emailservice.$inject = [];
-
     function emailservice() {
         var service = {
             send: send

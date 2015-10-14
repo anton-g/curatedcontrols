@@ -5,8 +5,7 @@
         .module('curatedcontrols.tips')
         .controller('Tips', Tips);
 
-    Tips.$inject = [];
-
+    /* @ngInject */
     function Tips() {
         var vm = this;
 

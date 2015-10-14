@@ -5,8 +5,7 @@
         .module('curatedcontrols.about')
         .controller('About', About);
 
-    About.$inject = [];
-
+    /* @ngInject */
     function About() {
         var vm = this;
 

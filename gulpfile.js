@@ -4,57 +4,69 @@ var gulp = require('gulp'),
     plato = require('plato');
 var plug = require('gulp-load-plugins')();
 
-var source = [
-  './app/**/*.js'
-];
 
 var paths = {
-  build: './build/',
-  scripts: './scripts/**/*.js',
-  index: './index.html',
-  css: './content/css/**/*.css',
-  images: './content/img/**/*',
-  fonts: './content/fonts/**/*',
+    build: './build/',
+    js: [
+    "./app/**/*module*.js",
+    "./app/**/*.js",
+    ],
+    scripts: [
+    'scripts/angular.min.js',
+    'scripts/jquery.min.js',
+    'scripts/parse-1.6.2.min.js',
+    'scripts/jquery.flexslider.js',
+    'scripts/**/*.js'
+    ],
+    index: './index.html',
+    css: './content/css/**/*.css',
+    images: './content/img/**/*',
+    fonts: './content/fonts/**/*',
+    htmltemplates: './app/**/*.html'
 };
 
 gulp.task('default', ['help'], function() {});
 gulp.task('help', plug.taskListing);
 
-gulp.task('js', ['analyze'], function(){
-  return gulp
-    .src(source)
-    .pipe(plug.concat('all.min.js'))
-    .pipe(plug.ngAnnotate({
-      add: true,
-      single_quotes: true
-    }))
-    .pipe(plug.bytediff.start())
-    .pipe(plug.uglify({mangle:true}))
-    .pipe(plug.bytediff.stop(bytediffFormatter))
-    .pipe(gulp.dest(paths.build));
+gulp.task('js', ['analyze', 'templatecache'], function(){
+    var source = [].concat(paths.js, paths.build + 'templates.js');
+
+    return gulp
+        .src(source)
+        .pipe(plug.concat('all.min.js'))
+        .pipe(plug.ngAnnotate({
+          add: true,
+          single_quotes: true
+        }))
+        .pipe(plug.bytediff.start())
+        .pipe(plug.uglify({mangle:true}))
+        .pipe(plug.bytediff.stop(bytediffFormatter))
+        .pipe(gulp.dest(paths.build));
 });
 
 gulp.task('analyze', function(){
-  generatePlatoReport();
+    generatePlatoReport();
 
-  return gulp
-    .src(source)
-    .pipe(plug.jshint('./.jshintrc'))
-    .pipe(plug.jshint.reporter('jshint-stylish'))
-    .pipe(plug.jshint.reporter("fail"));
+    return gulp
+        .src(paths.js)
+        .pipe(plug.jshint('./.jshintrc'))
+        .pipe(plug.jshint.reporter('jshint-stylish'))
+        .pipe(plug.jshint.reporter("fail"));
 });
 
 gulp.task('scripts', function() {
-    return gulp.src(paths.scripts)
-        .pipe(plug.concat('vendor.min.js'))
-        .pipe(plug.bytediff.start())
-        .pipe(plug.uglify())
-        .pipe(plug.bytediff.stop(bytediffFormatter))
-        .pipe(gulp.dest(paths.build + 'scripts'));
+    return gulp
+      .src(paths.scripts)
+      .pipe(plug.concat('vendor.min.js'))
+      .pipe(plug.bytediff.start())
+      .pipe(plug.uglify())
+      .pipe(plug.bytediff.stop(bytediffFormatter))
+      .pipe(gulp.dest(paths.build + 'scripts'));
 });
 
 gulp.task('css', function(){
-  return gulp.src(paths.css)
+  return gulp
+    .src(paths.css)
     .pipe(plug.concat('all.min.css'))
     .pipe(plug.autoprefixer('last 2 version', '> 5%'))
     .pipe(plug.bytediff.start())
@@ -66,7 +78,8 @@ gulp.task('css', function(){
 gulp.task('images', function(){
   var dest = paths.build + 'content/img';
 
-  return gulp.src(paths.images)
+  return gulp
+    .src(paths.images)
     .pipe(plug.cache(plug.imagemin({
       optimizationLevel: 3
     })))
@@ -82,12 +95,26 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('build', ['js', 'scripts', 'css', 'images', 'fonts'], function(){
-  var sources = gulp.src(['./build/**/*.js', './build/**/*.css'], {read: false});
+  var sources = gulp.src(['./build/scripts/*.js', './build/all.min.js', './build/**/*.css'], {read: false});
 
   return gulp
     .src(paths.index)
-    .pipe(plug.inject(sources))
+    .pipe(plug.inject(sources, { ignorePath: 'build', addRootSlash: false }))
     .pipe(gulp.dest(paths.build));
+});
+
+gulp.task('templatecache', function() {
+    return gulp
+        .src(paths.htmltemplates)
+        .pipe(plug.minifyHtml({
+            empty: true
+        }))
+        .pipe(plug.angularTemplatecache('templates.js', {
+            module: 'curatedcontrols.core',
+            standalone: false,
+            root: 'app/'
+        }))
+        .pipe(gulp.dest(paths.build));
 });
 
 gulp.task('clean', function(cb) {

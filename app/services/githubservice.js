@@ -5,8 +5,7 @@
         .module('curatedcontrols')
         .factory('githubservice', githubservice);
 
-    githubservice.$inject = ['$http'];
-
+    /* @ngInject */
     function githubservice($http) {
         var service = {
           getRepo: getRepo

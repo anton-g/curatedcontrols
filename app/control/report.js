@@ -5,8 +5,7 @@
         .module('curatedcontrols.control')
         .controller('Report', Report);
 
-    Report.$inject = ['$routeParams', 'dataservice', 'emailservice'];
-
+    /* @ngInject */
     function Report($routeParams, dataservice, emailservice) {
         var vm = this;
 
