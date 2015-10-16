@@ -12,10 +12,10 @@ var paths = {
     "./app/**/*.js",
     ],
     scripts: [
-    'scripts/angular.min.js',
     'scripts/jquery.min.js',
+    'scripts/jquery.flexslider-min.js',
+    'scripts/angular.min.js',
     'scripts/parse-1.6.2.min.js',
-    'scripts/jquery.flexslider.js',
     'scripts/**/*.js'
     ],
     index: './index.html',
