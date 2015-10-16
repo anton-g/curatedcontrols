@@ -36,7 +36,12 @@ function makePage($data, $siteRoot) {
             <meta property="og:title" content="<?php echo $data->name; ?>" />
             <meta property="og:description" content="<?php echo $data->description; ?>" />
             <meta property="og:image" content="<?php echo current($data->previews)->url; ?>" />
-            <!-- etc. -->
+
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:site" content="@curatedcontrols">
+            <meta name="twitter:title" content="<?php echo $data->name; ?>">
+            <meta name="twitter:description" content="<?php echo $data->description; ?>">
+            <meta name="twitter:image" content="<?php echo current($data->previews)->url; ?>">
         </head>
         <body>
             <p><?php echo $data->description; ?></p>
