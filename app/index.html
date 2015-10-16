@@ -3,9 +3,9 @@
     <div class="row search">
       <form>
         <div class="input-group">
-          <input type="text" class="form-control" ng-model="searchString" placeholder="Search controls..">
+          <input type="text" class="form-control" ng-model="vm.searchString" placeholder="Search controls..">
           <span class="input-group-btn">
-            <button class="btn btn-default btn-embossed" type="submit" ng-click="vm.setSearch(searchString)">Search</button>
+            <button class="btn btn-primary btn-embossed" type="submit" ng-click="vm.setSearch(vm.searchString)">Search</button>
           </span>
         </div>
       </form>
@@ -26,7 +26,7 @@
         </div>
         <div class="row settings-row">
           <div class="col-xs-6">
-            <a class="btn btn-primary btn-sm btn-embossed btn-block" href ng-click="vm.clearTags()">Clear tags</a>
+            <a class="btn btn-default btn-sm btn-embossed btn-block" href ng-click="vm.clearSettings()">Clear filters</a>
           </div>
           <div class="col-xs-6">
             <div class="btn-toolbar">

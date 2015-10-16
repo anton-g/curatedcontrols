@@ -18,7 +18,7 @@
         var service = {
             getTags: getTags,
             toggleTag: toggleTag,
-            clearTags: clearTags,
+            clearSettings: clearSettings,
             getSelectedTags: getSelectedTags,
             tagSelected: tagSelected,
 
@@ -58,8 +58,10 @@
           }
         }
 
-        function clearTags() {
+        function clearSettings() {
           srv.selectedTags = [];
+          srv.search = '';
+          srv.selectedLang = null;
         }
 
         function setFeedStyle(feedStyle) {
