@@ -3,22 +3,22 @@ Todo:
   Privacy Policy
   Analytics
   Rich Sharing
+    Meta tags on index
+    Add support for Twitter, etc
 
   Input
 
   Search
-    Search on stroke or button
+    Search on stroke or button?
 
   Single-control
-    Improve design
+    Show loading text on github info
     Report
       Email backend
 
   Feed
-    Setting for items per page
     ListView?
     Pagination
-      Pagination controls should disable when not usable
 
   About
     Improve content
@@ -41,6 +41,7 @@ Release:
   Reddit - iosprogramming / swift / ...
   Slack
   Dev Tools Weekly
+  http://ios-goodies.com
 
 V2:
   Ratings
